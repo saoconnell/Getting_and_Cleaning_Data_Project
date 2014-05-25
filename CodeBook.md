@@ -14,100 +14,85 @@ variables or features, depending on your preference.
 
 The specicial charaters "-" and "," were replaced with "." and the "(" and ")" were replaced with a null value ''.
 
-Only the mean and standard deviate variables were selected.  This was accomplished by greping on "mean" and "std".  
-These appeared to be the most likely candidates based on the original developers naming convention.  
+Only the mean and standard deviate variables were selected.  This was accomplished by greping on "mean" and "std", excluding
+the meanFreq variables
+
+grep(".+[.]((mean)|(std))(([.]+)|$)?", tolower(headerFIX$colName)
+
+These appeared to be the most likely candidates based on the original developers naming convention, description in the features_info.txt, and the vast forum exchange on this topic.  
 
 ### New Variable Names
 
 After clean up, the following are new names for the mean and standard deviation variables
 
- [1] "tBodyAcc.mean.X"                   
- [2] "tBodyAcc.mean.Y"                   
- [3] "tBodyAcc.mean.Z"                   
- [4] "tBodyAcc.std.X"                    
- [5] "tBodyAcc.std.Y"                    
- [6] "tBodyAcc.std.Z"                    
- [7] "tGravityAcc.mean.X"                
- [8] "tGravityAcc.mean.Y"                
- [9] "tGravityAcc.mean.Z"                
-[10] "tGravityAcc.std.X"                 
-[11] "tGravityAcc.std.Y"                 
-[12] "tGravityAcc.std.Z"                 
-[13] "tBodyAccJerk.mean.X"               
-[14] "tBodyAccJerk.mean.Y"               
-[15] "tBodyAccJerk.mean.Z"               
-[16] "tBodyAccJerk.std.X"                
-[17] "tBodyAccJerk.std.Y"                
-[18] "tBodyAccJerk.std.Z"                
-[19] "tBodyGyro.mean.X"                  
-[20] "tBodyGyro.mean.Y"                  
-[21] "tBodyGyro.mean.Z"                  
-[22] "tBodyGyro.std.X"                   
-[23] "tBodyGyro.std.Y"                   
-[24] "tBodyGyro.std.Z"                   
-[25] "tBodyGyroJerk.mean.X"              
-[26] "tBodyGyroJerk.mean.Y"              
-[27] "tBodyGyroJerk.mean.Z"              
-[28] "tBodyGyroJerk.std.X"               
-[29] "tBodyGyroJerk.std.Y"               
-[30] "tBodyGyroJerk.std.Z"               
-[31] "tBodyAccMag.mean"                  
-[32] "tBodyAccMag.std"                   
-[33] "tGravityAccMag.mean"               
-[34] "tGravityAccMag.std"                
-[35] "tBodyAccJerkMag.mean"              
-[36] "tBodyAccJerkMag.std"               
-[37] "tBodyGyroMag.mean"                 
-[38] "tBodyGyroMag.std"                  
-[39] "tBodyGyroJerkMag.mean"             
-[40] "tBodyGyroJerkMag.std"              
-[41] "fBodyAcc.mean.X"                   
-[42] "fBodyAcc.mean.Y"                   
-[43] "fBodyAcc.mean.Z"                   
-[44] "fBodyAcc.std.X"                    
-[45] "fBodyAcc.std.Y"                    
-[46] "fBodyAcc.std.Z"                    
-[47] "fBodyAcc.meanFreq.X"               
-[48] "fBodyAcc.meanFreq.Y"               
-[49] "fBodyAcc.meanFreq.Z"               
-[50] "fBodyAccJerk.mean.X"               
-[51] "fBodyAccJerk.mean.Y"               
-[52] "fBodyAccJerk.mean.Z"               
-[53] "fBodyAccJerk.std.X"                
-[54] "fBodyAccJerk.std.Y"                
-[55] "fBodyAccJerk.std.Z"                
-[56] "fBodyAccJerk.meanFreq.X"           
-[57] "fBodyAccJerk.meanFreq.Y"           
-[58] "fBodyAccJerk.meanFreq.Z"           
-[59] "fBodyGyro.mean.X"                  
-[60] "fBodyGyro.mean.Y"                  
-[61] "fBodyGyro.mean.Z"                  
-[62] "fBodyGyro.std.X"                   
-[63] "fBodyGyro.std.Y"                   
-[64] "fBodyGyro.std.Z"                   
-[65] "fBodyGyro.meanFreq.X"              
-[66] "fBodyGyro.meanFreq.Y"              
-[67] "fBodyGyro.meanFreq.Z"              
-[68] "fBodyAccMag.mean"                  
-[69] "fBodyAccMag.std"                   
-[70] "fBodyAccMag.meanFreq"              
-[71] "fBodyBodyAccJerkMag.mean"          
-[72] "fBodyBodyAccJerkMag.std"           
-[73] "fBodyBodyAccJerkMag.meanFreq"      
-[74] "fBodyBodyGyroMag.mean"             
-[75] "fBodyBodyGyroMag.std"              
-[76] "fBodyBodyGyroMag.meanFreq"         
-[77] "fBodyBodyGyroJerkMag.mean"         
-[78] "fBodyBodyGyroJerkMag.std"          
-[79] "fBodyBodyGyroJerkMag.meanFreq"     
-[80] "angletBodyAccMean.gravity"         
-[81] "angletBodyAccJerkMean.gravityMean" 
-[82] "angletBodyGyroMean.gravityMean"    
-[83] "angletBodyGyroJerkMean.gravityMean"
-[84] "angleX.gravityMean"     
-[85] "angleY.gravityMean"                
-[86] "angleZ.gravityMean"     
-
+ [1] "subjectID"                
+ [2] "activityLabel"            
+ [3] "tBodyAcc.mean.X"          
+ [4] "tBodyAcc.mean.Y"          
+ [5] "tBodyAcc.mean.Z"          
+ [6] "tBodyAcc.std.X"           
+ [7] "tBodyAcc.std.Y"           
+ [8] "tBodyAcc.std.Z"           
+ [9] "tGravityAcc.mean.X"       
+[10] "tGravityAcc.mean.Y"       
+[11] "tGravityAcc.mean.Z"       
+[12] "tGravityAcc.std.X"        
+[13] "tGravityAcc.std.Y"        
+[14] "tGravityAcc.std.Z"        
+[15] "tBodyAccJerk.mean.X"      
+[16] "tBodyAccJerk.mean.Y"      
+[17] "tBodyAccJerk.mean.Z"      
+[18] "tBodyAccJerk.std.X"       
+[19] "tBodyAccJerk.std.Y"       
+[20] "tBodyAccJerk.std.Z"       
+[21] "tBodyGyro.mean.X"         
+[22] "tBodyGyro.mean.Y"         
+[23] "tBodyGyro.mean.Z"         
+[24] "tBodyGyro.std.X"          
+[25] "tBodyGyro.std.Y"          
+[26] "tBodyGyro.std.Z"          
+[27] "tBodyGyroJerk.mean.X"     
+[28] "tBodyGyroJerk.mean.Y"     
+[29] "tBodyGyroJerk.mean.Z"     
+[30] "tBodyGyroJerk.std.X"      
+[31] "tBodyGyroJerk.std.Y"      
+[32] "tBodyGyroJerk.std.Z"      
+[33] "tBodyAccMag.mean"         
+[34] "tBodyAccMag.std"          
+[35] "tGravityAccMag.mean"      
+[36] "tGravityAccMag.std"       
+[37] "tBodyAccJerkMag.mean"     
+[38] "tBodyAccJerkMag.std"      
+[39] "tBodyGyroMag.mean"        
+[40] "tBodyGyroMag.std"         
+[41] "tBodyGyroJerkMag.mean"    
+[42] "tBodyGyroJerkMag.std"     
+[43] "fBodyAcc.mean.X"          
+[44] "fBodyAcc.mean.Y"          
+[45] "fBodyAcc.mean.Z"          
+[46] "fBodyAcc.std.X"           
+[47] "fBodyAcc.std.Y"           
+[48] "fBodyAcc.std.Z"           
+[49] "fBodyAccJerk.mean.X"      
+[50] "fBodyAccJerk.mean.Y"      
+[51] "fBodyAccJerk.mean.Z"      
+[52] "fBodyAccJerk.std.X"       
+[53] "fBodyAccJerk.std.Y"       
+[54] "fBodyAccJerk.std.Z"       
+[55] "fBodyGyro.mean.X"         
+[56] "fBodyGyro.mean.Y"         
+[57] "fBodyGyro.mean.Z"         
+[58] "fBodyGyro.std.X"          
+[59] "fBodyGyro.std.Y"          
+[60] "fBodyGyro.std.Z"          
+[61] "fBodyAccMag.mean"         
+[62] "fBodyAccMag.std"          
+[63] "fBodyBodyAccJerkMag.mean" 
+[64] "fBodyBodyAccJerkMag.std"  
+[65] "fBodyBodyGyroMag.mean"    
+[66] "fBodyBodyGyroMag.std"     
+[67] "fBodyBodyGyroJerkMag.mean"
+[68] "fBodyBodyGyroJerkMag.std" 
 
 ## Step 2:  Reading the Test and Train Datasets
 
@@ -124,11 +109,11 @@ The test and train datasets were read into an element in a pre-defined list().  
 feature rbindlist, which I found to be slightly faster in this case.  However, I frequently load several files at 
 a time and rbind them together.  The rbindlist, is MUCH fast at binding rows together.
 
-## Step 3:  Feature Names
+## Step 3:  ACTIVITY INDICATORS (Y VALUE) AND  FOR TRAIN AND TEST
 
-The features were the activities associated with a specific set of samples.
+The Y Labels are the activities associated with a specific set of samples.
 
-The current feature list was a numeric indicator for each row in the dataset.  This is not a very meaningful name.
+The current Y label list was a numeric indicator for each row in the dataset.  This is not a very meaningful name.
 
 The numeric values were replaced with their associated activity labels, greating a more meaningful name to be
 associated with the measurements.
@@ -154,5 +139,6 @@ The tidayData is dcast and means of the combined data taken.
 
 The resulting data is then written to a dataset for later processing.
 
+## Submit Dataset
 
-
+The means are calculated with the dcast function which promotes the melted dataset into a wide tidy set.

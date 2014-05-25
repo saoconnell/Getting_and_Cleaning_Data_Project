@@ -34,11 +34,10 @@ headerFIX$colName <- gsub("[-,]", '\\.', headerRAW$colName)
 headerFIX$colName <- gsub("[()]", '', headerFIX$colName)
 
 ## MEAN & STD COLUMNS TO SELECT FROM THE FULL DATASET
-includeCol <- grep("(mean|std)", headerFIX$colName, ignore.case = TRUE)
+includeCol <- grep(".+[.]((mean)|(std))(([.]+)|$)?", tolower(headerFIX$colName))
 
 ## DATASET COLUMN NAMES
 datasetHeader <- as.vector(headerFIX$colName[includeCol]) 
-
 
 ##---------------------------------------------------------------------------
 ## READ TEST AND TRAINING DATASETS INTO data.tables
@@ -115,5 +114,12 @@ meanBysubjectByactivity <- dcast(tidyData, subjectID + activityLabel ~ variable,
 
 tidyData_means <- melt(meanBysubjectByactivity, id=c("subjectID", "activityLabel"))
 
-## WRITE THE RESULT TO A TEXT FILE
+## WRITE THE RESULT TO A TEXT FILE, THE MELTED VERSION
 write.table(tidyData_means, file="tidyData_means.txt", sep=" ")
+
+## WIRTE THE WIDE TIDY DATA, 180*68 FOR SUBMISSION
+write.table(meanBysubjectByactivity, file="meanBysubjectByactivity.txt", sep=" ")
+
+dim(meanBysubjectByactivity)
+options(width=30)
+names(meanBysubjectByactivity)
