@@ -20,3 +20,13 @@ The course instructures for this project include (from the course page)
 5. Appropriately labels the data set with descriptive activity names. 
 6. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
+
+## NOTES TO REVIEWER:
+
+- It was not completely clear to me from the instructions and/or forums which dataset was
+to be updload.  I have updload the larger tidyData set to the website for this review.  However,
+if the data set form step 6 is required I have included it in the repo
+
+- Interesting assignment ??
+
+Have a great week reviewing!

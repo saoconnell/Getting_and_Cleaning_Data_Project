@@ -126,5 +126,33 @@ a time and rbind them together.  The rbindlist, is MUCH fast at binding rows tog
 
 ## Step 3:  Feature Names
 
+The features were the activities associated with a specific set of samples.
+
+The current feature list was a numeric indicator for each row in the dataset.  This is not a very meaningful name.
+
+The numeric values were replaced with their associated activity labels, greating a more meaningful name to be
+associated with the measurements.
+
+The y_test.txt and y_train.txt files were read in and the numeric value was replaced with the activity label that is located 
+in the activities_label.txt file
+
+## Step 4: Subjects
+
+The subject_test.txt and subject_train.txt files were read in, rbind, and then associated with the working datasets created above.
+
+## STEP 5: Merge everything together
+
+Now that I have the working data (the select mean and std), a clean list of variable names, the activity labels cleaned up (test and train), and the subjects (test and train) I combined the together into one data.table.  
+
+This data.table was converted to a data.frame for processing by reshape2::melt
+
+The resulting melted dataset is written to a file, tidyData.txt for submission to Coursera.
+
+## STEP 6
+
+The tidayData is dcast and means of the combined data taken.
+
+The resulting data is then written to a dataset for later processing.
+
 
 
