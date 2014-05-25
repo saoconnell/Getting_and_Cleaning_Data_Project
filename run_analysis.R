@@ -113,5 +113,7 @@ write.table(tidyData, file="tidyData.txt", sep=" ")
 ##
 meanBysubjectByactivity <- dcast(tidyData, subjectID + activityLabel ~ variable, mean)
 
+tidyData_means <- melt(meanBysubjectByactivity, id=c("subjectID", "activityLabel"))
+
 ## WRITE THE RESULT TO A TEXT FILE
-write.table(meanBysubjectByactivity, file="meanBysubjectByactivity.txt", sep=" ")
+write.table(tidyData_means, file="tidyData_means.txt", sep=" ")
